@@ -1,0 +1,30 @@
+{
+  "name": "expressjs-examples",
+  "version": "1.0.0",
+  "description": "ExpressJS classroom demo code",
+  "main": "index.js",
+  "scripts": {
+    "start": "ts-node-dev index.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kayartaya-vinod"
+  },
+  "keywords": [
+    "expressjs",
+    "vinod"
+  ],
+  "author": "Vinod <vinod@vinod.co>",
+  "license": "MIT",
+  "dependencies": {
+    "@types/node": "^10.12.11",
+    "express": "^4.16.4",
+    "mysql": "^2.16.0",
+    "reflect-metadata": "^0.1.12",
+    "ts-node": "^7.0.1",
+    "ts-node-dev": "^1.0.0-pre.31",
+    "typeorm": "^0.2.9",
+    "typescript": "^3.2.1"
+  }
+}
