@@ -1,17 +1,17 @@
-import { Entity, PrimaryColumn, Column } from 'typeorm';
+import { Entity, PrimaryColumn, Column, PrimaryGeneratedColumn } from 'typeorm';
 
 // ./entity/Category.ts
 
 @Entity({
-    name: 'categories'
+    name: 'categories' // table name
 })
 export class Category {
-    @PrimaryColumn({ name: 'category_id' })
+    @PrimaryGeneratedColumn({ name: 'category_id' })
     id: number;
     @Column({ name: 'category_name' })
     name: string;
     @Column()
     description: string;
-    @Column({ select: false })
+    @Column()
     picture: Buffer;
 }

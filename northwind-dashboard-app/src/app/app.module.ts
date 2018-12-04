@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
@@ -10,12 +11,18 @@ import { CategoryHomeComponent } from './components/category-home/category-home.
 import { ViewAllCategoriesComponent } from './components/view-all-categories/view-all-categories.component';
 import { AddNewCategoryComponent } from './components/add-new-category/add-new-category.component';
 import { CategoryService } from './service/category.service';
+import { LoginComponent } from './components/login/login.component';
+import { UserService } from './service/user.service';
 
 const routeConfig: Routes = [
   {
     path: '',
     pathMatch: 'full',
     component: HomeComponent
+  },
+  {
+    path: 'login',
+    component: LoginComponent
   },
   {
     path: 'category',
@@ -45,15 +52,19 @@ const routeConfig: Routes = [
     HomeComponent,
     CategoryHomeComponent,
     ViewAllCategoriesComponent,
-    AddNewCategoryComponent
+    AddNewCategoryComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot(routeConfig),
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [
-    CategoryService
+    CategoryService,
+    UserService
   ],
   bootstrap: [AppComponent]
 })

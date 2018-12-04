@@ -19,7 +19,9 @@
   "license": "MIT",
   "dependencies": {
     "@types/node": "^10.12.11",
+    "body-parser": "^1.18.3",
     "express": "^4.16.4",
+    "jsonwebtoken": "^8.4.0",
     "mysql": "^2.16.0",
     "reflect-metadata": "^0.1.12",
     "ts-node": "^7.0.1",

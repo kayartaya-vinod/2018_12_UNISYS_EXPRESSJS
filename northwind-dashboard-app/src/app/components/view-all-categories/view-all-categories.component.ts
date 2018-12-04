@@ -10,11 +10,22 @@ export class ViewAllCategoriesComponent implements OnInit {
 
   categories: Array<any>;
 
-  constructor(private service: CategoryService) { }
+  constructor(public service: CategoryService) { }
 
   ngOnInit() {
     this.service.getAllCategories()
       .subscribe(data => this.categories = data);
   }
 
+  deleteCategory(cat) {
+    if (!confirm('Are you sure?')) return;
+
+    this.service.deleteCategory(cat.id)
+      .subscribe(() => {
+        let index = this.categories.findIndex(c => c === cat);
+        this.categories.splice(index, 1);
+      }, err=>{
+        alert('There was an error: ' + err.message)
+      })
+  }
 }

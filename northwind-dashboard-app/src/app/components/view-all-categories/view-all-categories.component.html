@@ -9,8 +9,16 @@
   </thead>
   <tbody>
     <tr *ngFor="let c of categories">
-      <td>{{ c.name }}</td>
-      <td>{{ c.description }}</td>
+      <td>
+        <!-- <img src="{{ service.baseUrl }}{{ c.id }}/picture" 
+          style="max-height: 75px;" alt=""> -->
+        {{ c.name }}</td>
+      <td>{{ c.description }}
+
+        <span class="fa fa-trash pull-right" 
+          style="cursor: pointer"
+          (click)="deleteCategory(c)"></span>
+      </td>
     </tr>
   </tbody>
 </table>

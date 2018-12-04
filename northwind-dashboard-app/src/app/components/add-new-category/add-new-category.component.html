@@ -1,3 +1,25 @@
-<p>
-  add-new-category works!
-</p>
+<h3>Add new category</h3>
+
+<form [formGroup]="category" class="form" (submit)="submitHandler()">
+
+  <div class="form-group">
+    <label for="cname">Category name</label>
+    <input id="cname" type="text" class="form-control"
+      formControlName="name">
+
+    <div class="err" *ngIf="category.controls['name'].dirty && category.controls['name'].invalid">
+      <div *ngIf="category.controls['name'].errors.required">Category name is required!</div>
+      <div *ngIf="category.controls['name'].errors.minlength">Category name must be atleast 5 letters!</div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="desc">Description</label>
+    <input id="desc" type="text" class="form-control"
+      formControlName="description">
+  </div>
+
+  <button class="btn btn-{{ category.valid? 'primary': 'danger' }}"
+    [disabled]="category.invalid"
+    >Save data</button>
+</form>
