@@ -1,9 +1,9 @@
-import { HttpInterceptor, HttpRequest, HttpHandler } from '@angular/common/http';
+import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { headersToString } from 'selenium-webdriver/http';
 
 // module: ./interceptors/autho-header.ts
-
+import 'rxjs/add/operator/map';
 
 export class AuthHeaderInterceptor implements HttpInterceptor {
 
@@ -18,7 +18,14 @@ export class AuthHeaderInterceptor implements HttpInterceptor {
                 headers: req.headers.set('Authorization', 'Bearer ' + sessionStorage['_x'])
             });
         }
-        return next.handle(newReq);
+        return next.handle(newReq).map(
+            (evt: HttpEvent<any>) => {
+                if (evt instanceof HttpResponse) {
+                    // handler response
+                    console.log(evt.body);
+                }
+            }
+        )
     }
 
 }
