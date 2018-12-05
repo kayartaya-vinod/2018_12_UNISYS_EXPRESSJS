@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
@@ -13,6 +13,7 @@ import { AddNewCategoryComponent } from './components/add-new-category/add-new-c
 import { CategoryService } from './service/category.service';
 import { LoginComponent } from './components/login/login.component';
 import { UserService } from './service/user.service';
+import { AuthHeaderInterceptor } from './interceptors/auth-header';
 
 const routeConfig: Routes = [
   {
@@ -64,7 +65,12 @@ const routeConfig: Routes = [
   ],
   providers: [
     CategoryService,
-    UserService
+    UserService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthHeaderInterceptor,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })

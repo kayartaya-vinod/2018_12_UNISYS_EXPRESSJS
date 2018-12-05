@@ -19,11 +19,7 @@ export class LoginComponent implements OnInit {
   submitHandler() {
     this.userService.login(this.user)
       .subscribe(
-        resp => { 
-          sessionStorage['_x'] = resp['token'];
-          sessionStorage['_z'] = JSON.stringify(resp['user']);
-          this.router.navigate(['/']);
-        },
+        () => this.router.navigate(['/']),
         err => alert('There was an error: ' + err.message)
       );
   }
