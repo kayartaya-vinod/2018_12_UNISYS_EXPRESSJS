@@ -14,6 +14,8 @@ import { CategoryService } from './service/category.service';
 import { LoginComponent } from './components/login/login.component';
 import { UserService } from './service/user.service';
 import { AuthHeaderInterceptor } from './interceptors/auth-header';
+import { MessengerComponent } from './components/messenger/messenger.component';
+import { MessengerService } from './service/messenger.service';
 
 const routeConfig: Routes = [
   {
@@ -24,6 +26,10 @@ const routeConfig: Routes = [
   {
     path: 'login',
     component: LoginComponent
+  },
+  {
+    path: 'messenger',
+    component: MessengerComponent
   },
   {
     path: 'category',
@@ -54,7 +60,8 @@ const routeConfig: Routes = [
     CategoryHomeComponent,
     ViewAllCategoriesComponent,
     AddNewCategoryComponent,
-    LoginComponent
+    LoginComponent,
+    MessengerComponent
   ],
   imports: [
     BrowserModule,
@@ -64,6 +71,7 @@ const routeConfig: Routes = [
     FormsModule
   ],
   providers: [
+    MessengerService,
     CategoryService,
     UserService,
     {

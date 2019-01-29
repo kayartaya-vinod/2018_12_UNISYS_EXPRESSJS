@@ -1,0 +1,15 @@
+<h1>Messenger App (Websocket example)</h1>
+<hr>
+
+<div>
+  <input [disabled]="disableNameTextbox" placeholder="Enter your name..." type="text" class="form-control" name="name"
+    [(ngModel)]="user.name">
+  <input placeholder="Enter message text..." type="text" class="form-control" name="message" [(ngModel)]="user.message">
+  <button class="btn btn-primary" (click)="postMessage()">Post message</button>
+</div>
+
+<div *ngFor="let m of messages | async">
+  <p>
+    <b>{{m.name}}:</b> {{m.message}}
+  </p>
+</div>
